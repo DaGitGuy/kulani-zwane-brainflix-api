@@ -30,6 +30,7 @@ const createVid = (req, res) => {
 
     const newVid = videosModel.createVideo({
         title: req.body.title,
+        image: req.body.image,
         description: req.body.description
     });
     

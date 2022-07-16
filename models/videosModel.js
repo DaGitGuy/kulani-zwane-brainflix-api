@@ -28,7 +28,7 @@ const createVideo = (videoData) => {
     const newVideo = {
         title: videoData.title,
         channel: 'BrainStation May 2022',
-        image: 'http://localhost:8080/images/Upload-video-preview.jpg',
+        image: videoData.image,
         description: videoData.description, 
         views: '1',
         likes: '1',
