@@ -23,19 +23,18 @@ const getIndividualVideo = (videoId) => {
 
 const createVideo = (videoData) => {
     const videosData = readVideos();
-    const date = new Date().getTime();
 
     const newVideo = {
         title: videoData.title,
-        channel: 'BrainStation May 2022',
+        channel: videoData.channel,
         image: videoData.image,
         description: videoData.description, 
-        views: '1',
-        likes: '1',
-        duration: '4:16',
-        video: 'https://project-2-api.herokuapp.com/stream',
-        timestamp: date,
-        comments: [{name:'Slobodan Zee Man',comment:'Hot like a Miami night! Love to see it.',likes:1,timestamp:new Date.getTime()}],
+        views: videoData.views,
+        likes: videoData.likes,
+        duration: videoData.duration,
+        video: videoData.video,
+        timestamp: videoData.timestamp,
+        comments: videoData.comments,
         id: uuid()
     }
 

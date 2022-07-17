@@ -30,8 +30,15 @@ const createVid = (req, res) => {
 
     const newVid = videosModel.createVideo({
         title: req.body.title,
+        channel: req.body.channel,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        views: req.body.views,
+        likes: req.body.likes,
+        duration: req.body.duration,
+        video: req.body.video,
+        timestamp: req.body.timestamp,
+        comments: req.body.comments 
     });
     
     res.status(201).json(newVid);
