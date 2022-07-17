@@ -14,7 +14,8 @@ const getAllVids = (req, res) => {
 }
 
 const getIndividualVid = (req, res) => {
-    const singleVid = videosModel.getIndividualVideo(req.params.videoId);
+    const { videoId } = req.params;
+    const singleVid = videosModel.getIndividualVideo(videoId);
 
     if (!singleVid) {
         return res.status(404).send('Video not found.');
@@ -24,21 +25,21 @@ const getIndividualVid = (req, res) => {
 }
 
 const createVid = (req, res) => {
-    if (!req.body.title || !req.body.description) {
+    const { title, channel, image, description, views, likes, duration, video } = req.body;
+
+    if (!title || !description) {
         return res.status(400).send('Video title and description are required.')
     }
 
     const newVid = videosModel.createVideo({
-        title: req.body.title,
-        channel: req.body.channel,
-        image: req.body.image,
-        description: req.body.description,
-        views: req.body.views,
-        likes: req.body.likes,
-        duration: req.body.duration,
-        video: req.body.video,
-        timestamp: req.body.timestamp,
-        comments: req.body.comments 
+        title, // title: title
+        channel,
+        image,
+        description,
+        views,
+        likes,
+        duration,
+        video
     });
     
     res.status(201).json(newVid);

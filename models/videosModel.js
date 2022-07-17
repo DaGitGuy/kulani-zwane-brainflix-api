@@ -22,19 +22,22 @@ const getIndividualVideo = (videoId) => {
 }
 
 const createVideo = (videoData) => {
+    const { title, channel, image, description, views, likes, duration, video } = videoData;
+    const date = new Date().getTime();
+
     const videosData = readVideos();
 
     const newVideo = {
-        title: videoData.title,
-        channel: videoData.channel,
-        image: videoData.image,
-        description: videoData.description, 
-        views: videoData.views,
-        likes: videoData.likes,
-        duration: videoData.duration,
-        video: videoData.video,
-        timestamp: videoData.timestamp,
-        comments: videoData.comments,
+        title, // title: title
+        channel,
+        image,
+        description, 
+        views,
+        likes,
+        duration,
+        video,
+        timestamp: date, 
+        comments: [{name:'Slobodan Zee Man',comment:'Hot like a Miami night! Love to see it.',likes:2,timestamp:date},{name:'Brishan Tha King',comment:'Nice and funky like Funky Fridays! Keep it up guys.',likes:2,timestamp:date}],
         id: uuid()
     }
 
