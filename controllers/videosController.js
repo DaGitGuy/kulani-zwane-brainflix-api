@@ -25,7 +25,7 @@ const getIndividualVid = (req, res) => {
 }
 
 const createVid = (req, res) => {
-    const { title, channel, image, description, views, likes, duration, video } = req.body;
+    const { title, channel, image, description, views, likes, duration, video, id } = req.body;
 
     if (!title || !description) {
         return res.status(400).send('Video title and description are required.')
@@ -39,7 +39,8 @@ const createVid = (req, res) => {
         views,
         likes,
         duration,
-        video
+        video,
+        id
     });
     
     res.status(201).json(newVid);

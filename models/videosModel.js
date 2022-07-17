@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { v4: uuid } = require('uuid');
 
 const readVideos = () => {
     const videosDataFile = fs.readFileSync('./data/videos.json');
@@ -22,7 +21,7 @@ const getIndividualVideo = (videoId) => {
 }
 
 const createVideo = (videoData) => {
-    const { title, channel, image, description, views, likes, duration, video } = videoData;
+    const { title, channel, image, description, views, likes, duration, video, id } = videoData;
     const date = new Date().getTime();
 
     const videosData = readVideos();
@@ -38,7 +37,7 @@ const createVideo = (videoData) => {
         video,
         timestamp: date, 
         comments: [{name:'Slobodan Zee Man',comment:'Hot like a Miami night! Love to see it.',likes:2,timestamp:date},{name:'Brishan Tha King',comment:'Nice and funky like Funky Fridays! Keep it up guys.',likes:2,timestamp:date}],
-        id: uuid()
+        id
     }
 
     videosData.push(newVideo);
