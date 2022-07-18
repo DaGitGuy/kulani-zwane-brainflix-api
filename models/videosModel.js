@@ -20,6 +20,12 @@ const getIndividualVideo = (videoId) => {
     return singleVideo;
 }
 
+const getVideoIndex = (videoId) => {
+    const videosData = readVideos();
+    const index = videosData.findIndex(object => object.id === videoId);
+    return index; 
+}
+
 const createVideo = (videoData) => {
     const { title, channel, image, description, views, likes, duration, video, id } = videoData;
     const date = new Date().getTime();
@@ -47,8 +53,33 @@ const createVideo = (videoData) => {
     return newVideo;
 }
 
+const createComment = (commentData) => {
+    const { videoId, name, comment } = commentData;
+    const date = new Date().getTime();
+
+    const videosData = readVideos();
+    const videoData = getIndividualVideo(videoId);
+    const videoIndex = getVideoIndex(videoId); 
+
+    const newComment = {
+        name, // name: name
+        comment,
+        likes: 0,
+        timestamp: date 
+    }
+
+    videoData.comments.unshift(newComment);
+    
+    videosData.splice(videoIndex, 1, videoData);
+
+    writeVideo(videosData);
+
+    return newComment;
+}
+
 module.exports = {
     getAllVideos,
     getIndividualVideo,
-    createVideo
+    createVideo,
+    createComment
 }

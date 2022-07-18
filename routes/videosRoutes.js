@@ -11,4 +11,7 @@ router.get('/:videoId', videosController.getIndividualVid);
 // POST /videos
 router.post('/', videosController.createVid);
 
+// POST /videos/:videoId/comments
+router.post('/:videoId/comments', videosController.createComm);
+
 module.exports = router;

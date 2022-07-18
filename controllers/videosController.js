@@ -46,8 +46,26 @@ const createVid = (req, res) => {
     res.status(201).json(newVid);
 }
 
+const createComm = (req, res) => {
+    const { name, comment } = req.body;
+    const { videoId } = req.params;
+
+    if (!comment) {
+        return res.status(400).send('Comment is required.')
+    }
+
+    const newComm = videosModel.createComment({
+        videoId, // videoId: videoId
+        name, 
+        comment
+    });
+
+    res.status(201).json(newComm);
+}
+
 module.exports = {
     getAllVids,
     getIndividualVid,
-    createVid
+    createVid,
+    createComm
 }
