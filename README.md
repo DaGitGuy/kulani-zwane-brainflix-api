@@ -1,6 +1,6 @@
 # Project Overview
 
-API server for BrainFlix, an exciting new video streaming platform with a fast React front-end and a robust Express back-end!
+API server for BrainFlix -- an exciting new video streaming platform with a fast React front-end and a robust Express back-end!
 
 # Design
 The application design is responsive for mobile, tablet and desktop layouts.
